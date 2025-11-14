@@ -38,6 +38,7 @@ cd laravel_ecomm
 
 ### 2. Install dependencies
 composer install
+
 npm install
 
 ### 3. Environment setup
