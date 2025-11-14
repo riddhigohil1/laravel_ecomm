@@ -33,6 +33,7 @@ This project integrates **Filament Admin Panel** with **Spatie Roles & Permissio
 
 ### 1. Clone the repository
 git clone https://github.com/riddhigohil1/laravel_ecomm.git
+
 cd laravel_ecomm
 
 ### 2. Install dependencies
