@@ -27,9 +27,9 @@ class LoginResponse implements LoginResponseContract
         } 
         elseif ($user->hasRole(RolesEnum::User)) 
         {
-          return redirect()->route('home');
+          return redirect()->route('dashboard');
         } 
 
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

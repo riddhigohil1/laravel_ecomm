@@ -2,8 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Enum\RolesEnum;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -54,5 +57,14 @@ class UserFactory extends Factory
             'two_factor_recovery_codes' => null,
             'two_factor_confirmed_at' => null,
         ]);
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            // Find or create the 'admin' role and assign it
+            $role = Role::firstOrCreate(['name' => RolesEnum::User]);
+            $user->assignRole($role);
+        });
     }
 }
