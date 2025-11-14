@@ -38,6 +38,7 @@ class CategoriesRelationManager extends RelationManager
                     ->options(function() use($department){
                         return Category::query()
                             ->where('department_id', $department->id)
+                            ->whereNull('parent_id')
                             ->pluck('name', 'id')
                             ->toArray();
                     })
@@ -56,7 +57,6 @@ class CategoriesRelationManager extends RelationManager
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('parent.name')
-                    ->sortable()
                     ->searchable(),
             ])
             ->filters([
