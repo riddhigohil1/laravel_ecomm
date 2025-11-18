@@ -59,6 +59,8 @@ class AdminPanelProvider extends PanelProvider
                         RolesEnum::Vendor->value
                     ),
             ])
+            ->resourceCreatePageRedirect('index')
+            ->resourceEditPageRedirect('index')
             ->authMiddleware([
                 Authenticate::class,
             ]);
