@@ -22,13 +22,12 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
-    public function variation(): HasMany
+    public function variations(): HasMany
     {
         return $this->hasMany(Variation::class);
     }
-
-    // public function productVariations()
-    // {
-    //     return $this->hasMany(ProductVariation::class);
-    // }
+  
+    public function productVariations() : HasMany {
+        return $this->hasMany(ProductVariation::class, 'product_id');
+    }
 }

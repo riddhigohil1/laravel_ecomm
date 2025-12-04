@@ -7,8 +7,8 @@ use App\Filament\Resources\Products\Pages\CreateProduct;
 use App\Filament\Resources\Products\Pages\EditProduct;
 use App\Filament\Resources\Products\Pages\ListProducts;
 use App\Filament\Resources\Products\Pages\ProductImages;
+use App\Filament\Resources\Products\Pages\ProductVariationOption;
 use App\Filament\Resources\Products\Pages\ProductVariation;
-use App\Filament\Resources\Products\RelationManagers\VariationRelationManager;
 use App\Filament\Resources\Products\Schemas\ProductForm;
 use App\Filament\Resources\Products\Tables\ProductsTable;
 use App\Models\Product;
@@ -18,7 +18,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-
+use Filament\Resources\Pages\Page;
+use Filament\Pages\Enums\SubNavigationPosition;
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -26,6 +27,9 @@ class ProductResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'title';
+
+    protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
 
     public static function form(Schema $schema): Schema
     {
@@ -51,7 +55,8 @@ class ProductResource extends Resource
             'create' => CreateProduct::route('/create'),
             'edit' => EditProduct::route('/{record}/edit'),
             'images' => ProductImages::route('/{record}/images'),
-            'variations' => ProductVariation::route('/{record}/variations'),
+            'variation-options' => ProductVariationOption::route('/{record}/variation-options'),
+            'variation' => ProductVariation::route('/{record}/variation'),
         ];
     }
 
@@ -62,4 +67,23 @@ class ProductResource extends Resource
         return $user && $user->hasRole(RolesEnum::Vendor);
     }
 
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        $subNavigation = [];
+
+        if($page->record->variation == 1)
+        {
+            $subNavigation = [EditProduct::class, 
+                            ProductVariationOption::class, 
+                            ProductVariation::class,
+                            ProductImages::class];
+        }
+        else
+        {
+            $subNavigation = [EditProduct::class, 
+                            ProductImages::class,];
+        }
+        return 
+            $page->generateNavigationItems($subNavigation);
+    }
 }

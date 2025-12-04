@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Products\Pages;
 
 use App\Filament\Resources\Products\ProductResource;
+use BackedEnum;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Schemas\Schema;
@@ -11,6 +12,9 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 class ProductImages extends EditRecord
 {
     protected static string $resource = ProductResource::class;
+
+    protected static string | BackedEnum | null $navigationIcon = '';
+    protected static ?string $navigationLabel = 'Images'; 
 
     public function form(Schema $schema): Schema
     {

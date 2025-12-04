@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VariationOption extends Model
 {
-    // public function variation()
-    // {
-    //     return $this->belongsTo(Variation::class);
-    // }
+    public $timestamps = false;
+    
+    
 }

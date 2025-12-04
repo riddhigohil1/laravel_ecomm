@@ -3,12 +3,16 @@
 namespace App\Filament\Resources\Products\Pages;
 
 use App\Filament\Resources\Products\ProductResource;
+use BackedEnum;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditProduct extends EditRecord
 {
     protected static string $resource = ProductResource::class;
+
+    protected static string | BackedEnum | null $navigationIcon = '';
+
 
     protected function getHeaderActions(): array
     {

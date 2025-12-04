@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Variation extends Model
 {    
-    public function product() : BelongsTo
+    public $timestamps = false;
+    
+    public function options()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(VariationOption::class, 'variation_id');
     }
-
-    // public function options()
-    // {
-    //     return $this->hasMany(VariationOption::class);
-    // }
 }

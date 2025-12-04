@@ -30,11 +30,8 @@ class ProductsTable
                     ->badge()
                     ->sortable()
                     ->colors(ProductStatusEnum::colors()),
-                TextColumn::make('variation')
-                    ->color(fn (bool $state): string => $state ? 'success' : 'zinc')
-                    ->formatStateUsing(fn (bool $state): string => $state ? 'Add Variations' : 'No Variations')
-                    ->tooltip(fn (bool $state): string => $state ? 'Click here to add variations':'There is no variation')
-                    ->url(fn ($record) => $record->variation ? route('filament.admin.resources.products.variations', $record) : null),
+                IconColumn::make('variation')
+                    ->boolean(),
                 ToggleColumn::make(name: 'active'),
                 TextColumn::make('created_at')->dateTime(),
             ])
