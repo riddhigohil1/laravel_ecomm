@@ -14,6 +14,7 @@ class ListProducts extends ListRecords
     {
         return [
             CreateAction::make(),
+            
         ];
     }
 }
