@@ -20,7 +20,7 @@ This project integrates **Filament Admin Panel** with **Spatie Roles & Permissio
 ---
 
 ## 🧰 Tech Stack
-- **Backend:** Laravel 10
+- **Backend:** Laravel 12
 - **Frontend:** React Starter Kit
 - **Admin Panel:** Filament
 - **Roles & Permissions:** Spatie Laravel-Permission
