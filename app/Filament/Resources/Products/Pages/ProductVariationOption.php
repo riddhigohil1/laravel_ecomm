@@ -23,6 +23,13 @@ class ProductVariationOption extends EditRecord
         //only for product has variation
         abort_unless($this->record->variation, 403);
     }
+
+    public function getTitle(): string
+    {
+        // Just return the record's title without "Edit"
+        return $this->record->title;
+    }
+    
     public function form(Schema $schema): Schema
     {
         return $schema

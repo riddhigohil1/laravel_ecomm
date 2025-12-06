@@ -13,7 +13,12 @@ class EditProduct extends EditRecord
 
     protected static string | BackedEnum | null $navigationIcon = '';
 
-
+    public function getTitle(): string
+    {
+        // Just return the record's title without "Edit"
+        return $this->record->title;
+    }
+    
     protected function getHeaderActions(): array
     {
         return [

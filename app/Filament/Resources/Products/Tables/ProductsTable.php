@@ -22,8 +22,9 @@ class ProductsTable
             ->columns([
                 TextColumn::make('title')
                     ->sortable()
-                    ->words(10)
-                    ->searchable(),
+                    ->words(words: 4)
+                    ->searchable()
+                    ->tooltip(fn ($record) => $record->title),
                 TextColumn::make('department.name'),
                 TextColumn::make('category.name'),
                 TextColumn::make('status')

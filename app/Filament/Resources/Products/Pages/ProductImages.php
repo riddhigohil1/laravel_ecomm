@@ -16,6 +16,12 @@ class ProductImages extends EditRecord
     protected static string | BackedEnum | null $navigationIcon = '';
     protected static ?string $navigationLabel = 'Images'; 
 
+    public function getTitle(): string
+    {
+        // Just return the record's title without "Edit"
+        return $this->record->title;
+    }
+    
     public function form(Schema $schema): Schema
     {
         return $schema
