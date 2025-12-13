@@ -20,6 +20,8 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Filament\Resources\Pages\Page;
 use Filament\Pages\Enums\SubNavigationPosition;
+use Illuminate\Database\Eloquent\Builder;
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -30,6 +32,10 @@ class ProductResource extends Resource
 
     protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->forVendor();
+    }
 
     public static function form(Schema $schema): Schema
     {
