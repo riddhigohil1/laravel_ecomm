@@ -1,5 +1,5 @@
 import Footer from '@/layouts/Footer';
-import Header from '@/layouts/header';
+import Header from '@/layouts/Header';
 import { PaginationProps, Product } from '@/types';
 import ProductList from './ProductList';
 
