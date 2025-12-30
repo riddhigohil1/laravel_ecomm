@@ -41,3 +41,103 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export type Image = {
+    id: number;
+    thumb: string;
+    smalll: string;
+    large: string;
+};
+
+export type VariationTypeOption = {
+    id: number;
+    name: string;
+    images: Image[];
+    type: VariationType;
+};
+
+export type VariationType = {
+    id: number;
+    name: string;
+    type: 'Select' | 'Radio' | 'Image';
+    options: VariationTypeOption[];
+};
+
+export type Product = {
+    id: number;
+    title: string;
+    slug: string;
+    price: number;
+    quantity: number;
+    image: string;
+    images: Image[];
+    short_description: string;
+    description: string;
+    user: {
+        id: number;
+        name: string;
+    };
+    department: {
+        id: number;
+        name: string;
+    };
+    variationTypes: VariationType[];
+    variations: Array<{
+        id: number;
+        variation_type_option_ids: number[];
+        quantity: number;
+        price: number;
+    }>;
+};
+
+export type CartItem = {
+    id: number;
+    product_id: number;
+    title: string;
+    slug: string;
+    price: number;
+    quantity: number;
+    image: string;
+    option_ids: Record<string, number>;
+    options: VariationTypeOption[];
+};
+
+export type GroupedCartItem = {
+    user: User;
+    items: CartItem[];
+    totalPrice: number;
+    totalQuantity: number;
+};
+
+export type PaginationProps<T> = {
+    data: Array<T>;
+};
+
+export type OrderItem = {
+    id: number;
+    quantity: number;
+    price: number;
+    variation_type_option_ids: number[];
+    product: {
+        id: number;
+        title: string;
+        slug: string;
+        description: string;
+        image: string;
+    };
+};
+
+export type Order = {
+    id: number;
+    total_price: number;
+    status: string;
+    created_at: string;
+    vendorUser: {
+        id: number;
+        name: string;
+        email: string;
+        store_name: string;
+        store_address: string;
+    };
+    orderItems: OrderItem[];
+};
