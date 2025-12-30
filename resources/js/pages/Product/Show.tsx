@@ -2,7 +2,7 @@
 import Carousel from '@/components/Carousel';
 import CurrencyFormatter from '@/components/CurrencyFormatter';
 import { arraysAreEqual } from '@/helpers';
-import Header from '@/layouts/header';
+import Header from '@/layouts/Header';
 import { Product, VariationTypeOption } from '@/types';
 import { router, useForm, usePage } from '@inertiajs/react';
 import { useEffect, useMemo, useState } from 'react';
