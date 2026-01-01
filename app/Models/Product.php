@@ -70,7 +70,7 @@ class Product extends Model implements HasMedia
         foreach($this->variations as $variation)
         {
             $a = $variation->variation_type_option_ids;
-            sort($a);
+            if ($a) sort($a);
             if($optionIds == $a)
                 return $variation->price !== null ? $variation->price : $this->price;
         }

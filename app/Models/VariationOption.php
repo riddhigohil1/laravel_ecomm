@@ -9,5 +9,7 @@ class VariationOption extends Model
 {
     public $timestamps = false;
     
-    
+    public function variation() : BelongsTo {
+        return $this->belongsTo(Variation::class);
+    }
 }

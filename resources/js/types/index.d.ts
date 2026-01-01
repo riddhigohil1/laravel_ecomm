@@ -24,9 +24,18 @@ export interface NavItem {
 
 export interface SharedData {
     name: string;
+    csrf_token: string;
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    totalPrice: number;
+    totalQuantity: number;
+    success: {
+        message: string;
+        time: number;
+    };
+    error: string;
+    minCartItems: CartItem[];
     [key: string]: unknown;
 }
 

@@ -1,4 +1,4 @@
-//import { store } from '@/actions/App/Http/Controllers/CartController';
+import { store } from '@/actions/App/Http/Controllers/CartController';
 import Carousel from '@/components/Carousel';
 import CurrencyFormatter from '@/components/CurrencyFormatter';
 import { arraysAreEqual } from '@/helpers';

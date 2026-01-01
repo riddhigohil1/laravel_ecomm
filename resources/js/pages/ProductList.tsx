@@ -1,4 +1,4 @@
-//import { store } from '@/actions/App/Http/Controllers/CartController';
+import { store } from '@/actions/App/Http/Controllers/CartController';
 import { show } from '@/actions/App/Http/Controllers/ProductController';
 import CurrencyFormatter from '@/components/CurrencyFormatter';
 import { Button } from '@/components/ui/button';
