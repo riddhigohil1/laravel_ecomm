@@ -89,6 +89,7 @@ class StripController extends Controller
 
                 $plateFormFeePercent = config('app.platform_fee_pct');
 
+                // Update each order with commission details
                 foreach($orders as $order)
                 {   
                     $vendorShare = $order->total_price / $totalAmount;
@@ -128,7 +129,8 @@ class StripController extends Controller
                         ...$productToDeleteFromCart,
                         ...$order->orderItems->map(fn($item) => $item->product_id)->toArray(),
                     ];
-
+                    
+                    // Reduce product stock quantity
                     foreach($order->orderItems as $orderItem)
                     {
                         $options = $orderItem->variation_option_ids;
@@ -136,7 +138,7 @@ class StripController extends Controller
                         if($options)
                         {
                             sort($options);
-                            $variation = $product->variations()
+                            $variation = $product->productVariations()
                                 ->where('variation_option_ids', $options)
                                 ->first();
 

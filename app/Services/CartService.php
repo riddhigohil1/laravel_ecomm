@@ -333,7 +333,8 @@ class CartService
                 ]);
             }
         }
-
+        
+        // Clear the cookie after moving items to database
         Cookie::queue(self::COOKIE_NAME, '', -1);
 
     }
