@@ -49,8 +49,8 @@ export default function Show({
             .sort();
 
         for (let variation of product.variations) {
-            if (variation.variation_type_option_ids) {
-                const optionIds = variation.variation_type_option_ids.sort();
+            if (variation.variation_option_ids) {
+                const optionIds = variation.variation_option_ids.sort();
 
                 if (arraysAreEqual(selectedOptionIds, optionIds)) {
                     return {
@@ -162,7 +162,7 @@ export default function Show({
                             type="radio"
                             value={option.id}
                             checked={selectedOptions[type.id]?.id === option.id}
-                            name={'variation_type_' + type.id}
+                            name={'variation_' + type.id}
                             aria-label={option.name}
                         />
                     ))}

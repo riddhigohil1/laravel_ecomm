@@ -52,7 +52,12 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
-            'success' => session('success'),
+            'csrf_token'=>csrf_token(),
+            'success' => [
+                'message' => session('success'),
+                'title' => microtime(true),
+            ],
+            'error' => session('error'),
             'totalQuantity'=>$totalQuantity,
             'totalPrice'=>$totalPrice,
             'minCartItems' => $minCartItems,

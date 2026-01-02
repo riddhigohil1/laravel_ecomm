@@ -36,30 +36,22 @@ export default function Index() {
                                                 {cartItem.user.name}
                                             </Link>
                                             <div>
-                                                {
-                                                    <form
-                                                        action=""
-                                                        method="post"
-                                                    >
-                                                        <input
-                                                            type="hidden"
-                                                            name="_token"
-                                                            value={csrf_token}
-                                                        />
-                                                        <input
-                                                            type="hidden"
-                                                            name="vendor_id"
-                                                            value={
-                                                                cartItem.user.id
-                                                            }
-                                                        />
-                                                        <button className="btn btn-ghost btn-sm">
-                                                            <CreditCardIcon className="size-6" />
-                                                            Pay Only for this
-                                                            seller
-                                                        </button>
-                                                    </form>
-                                                }
+                                                <form action="" method="post">
+                                                    <input
+                                                        type="hidden"
+                                                        name="_token"
+                                                        value={csrf_token}
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        name="vendor_id"
+                                                        value={cartItem.user.id}
+                                                    />
+                                                    <button className="btn btn-ghost btn-sm">
+                                                        <CreditCardIcon className="size-6" />
+                                                        Pay Only for this seller
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                         {cartItem.items.map((item) => (
@@ -78,19 +70,17 @@ export default function Index() {
                     <div className="card-body">
                         Subtotal ({totalQuantity} items): &nbsp;
                         <CurrencyFormatter amount={totalPrice} />
-                        {
-                            <form {...checkout.form()}>
-                                <input
-                                    type="hidden"
-                                    name="_token"
-                                    value={csrf_token}
-                                />
-                                <button className="btn rounded-full bg-indigo-600 px-5 py-2 text-sm leading-5 font-semibold text-white hover:not-focus:bg-indigo-700 focus:outline focus:outline-violet-300 active:bg-violet-700">
-                                    <CreditCardIcon className="size-6" />
-                                    Proceed to Checkout
-                                </button>
-                            </form>
-                        }
+                        <form {...checkout.form()}>
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value={csrf_token}
+                            />
+                            <button className="btn rounded-full bg-indigo-600 px-5 py-2 text-sm leading-5 font-semibold text-white hover:not-focus:bg-indigo-700 focus:outline focus:outline-violet-300 active:bg-violet-700">
+                                <CreditCardIcon className="size-6" />
+                                Proceed to Checkout
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

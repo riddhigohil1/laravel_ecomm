@@ -40,8 +40,8 @@ class ProductVariation extends EditRecord
  
         foreach($types as $type)
         {
-            $fields[] = Hidden::make('variation_type_'.($type->id).'.id');
-            $fields[] = TextInput::make('variation_type_'.($type->id).'.name')
+            $fields[] = Hidden::make('variation_'.($type->id).'.id');
+            $fields[] = TextInput::make('variation_'.($type->id).'.name')
                         ->label($type->name)->readOnly(true);
         }
 
@@ -97,7 +97,7 @@ class ProductVariation extends EditRecord
 
         foreach($cartesianProduct as $product){
             $optionIds = collect($product)
-                            ->filter(fn($value, $key) => str_starts_with($key, 'variation_type_'))
+                            ->filter(fn($value, $key) => str_starts_with($key, 'variation_'))
                             ->map(fn($option) => $option['id'])
                             ->values()
                             ->toArray();
@@ -139,7 +139,7 @@ class ProductVariation extends EditRecord
                 foreach($result as $combination)
                 {
                     $newCombination = $combination + [
-                        'variation_type_'.($variation->id) => [
+                        'variation_'.($variation->id) => [
                             'id'=>$option->id,
                             'name'=>$option->name,
                             'type'=>$variation->name,
@@ -175,8 +175,8 @@ class ProductVariation extends EditRecord
 
             foreach($this->record->variations as $i => $variationType)
             {
-                if(isset($option['variation_type_'.($variationType->id)]['id']))
-                    $variationTypeOptionIds[] = $option['variation_type_'.($variationType->id)]['id'];
+                if(isset($option['variation_'.($variationType->id)]['id']))
+                    $variationTypeOptionIds[] = $option['variation_'.($variationType->id)]['id'];
             }
 
             $quantity = $option['quantity'];

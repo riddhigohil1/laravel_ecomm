@@ -93,7 +93,7 @@ export type Product = {
     variationTypes: VariationType[];
     variations: Array<{
         id: number;
-        variation_type_option_ids: number[];
+        variation_option_ids: number[];
         quantity: number;
         price: number;
     }>;
@@ -126,7 +126,7 @@ export type OrderItem = {
     id: number;
     quantity: number;
     price: number;
-    variation_type_option_ids: number[];
+    variation_option_ids: number[];
     product: {
         id: number;
         title: string;
@@ -145,8 +145,6 @@ export type Order = {
         id: number;
         name: string;
         email: string;
-        store_name: string;
-        store_address: string;
     };
     orderItems: OrderItem[];
 };

@@ -31,7 +31,7 @@ export default function Sucess({ orders }: { orders: Order[] }) {
                             <div className="text-gray-400">Seller</div>
                             <div>
                                 <Link href="#" className="hover:underline">
-                                    {order.vendorUser.data.store_name}
+                                    {order.vendorUser.data.name}
                                 </Link>
                             </div>
                         </div>

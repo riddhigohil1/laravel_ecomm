@@ -24,12 +24,7 @@ class LoginResponse implements LoginResponseContract
         if ($user->hasAnyRole([RolesEnum::Admin, RolesEnum::Vendor])) 
         { 
           return Inertia::location(route('filament.admin.pages.dashboard'));
-        } 
-        elseif ($user->hasRole(RolesEnum::User)) 
-        {
-          return redirect()->route('dashboard');
-        } 
-
+        }
         return redirect()->route('home');
     }
 }
